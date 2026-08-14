@@ -257,46 +257,42 @@ week03-company-profile/
 
 ## 9. Screenshots
 
-All required screenshots are stored in the `screenshots/` folder using the structure below.
-
 ### Home Page
-- `screenshots/pawbili home/Screenshot (634).png`
-- `screenshots/pawbili home/Screenshot (635).png`
-- `screenshots/pawbili home/Screenshot (636).png`
-- `screenshots/pawbili home/Screenshot (637).png`
+![Home 1](screenshots/pawbili%20home/Screenshot%20(634).png)
+![Home 2](screenshots/pawbili%20home/Screenshot%20(635).png)
+![Home 3](screenshots/pawbili%20home/Screenshot%20(636).png)
+![Home 4](screenshots/pawbili%20home/Screenshot%20(637).png)
 
 ### About Page
-- `screenshots/pawbili about/Screenshot (638).png`
-- `screenshots/pawbili about/Screenshot (639).png`
-- `screenshots/pawbili about/Screenshot (640).png`
-- `screenshots/pawbili about/Screenshot (641).png`
-- `screenshots/pawbili about/Screenshot (642).png`
+![About 1](screenshots/pawbili%20about/Screenshot%20(638).png)
+![About 2](screenshots/pawbili%20about/Screenshot%20(639).png)
+![About 3](screenshots/pawbili%20about/Screenshot%20(640).png)
+![About 4](screenshots/pawbili%20about/Screenshot%20(641).png)
+![About 5](screenshots/pawbili%20about/Screenshot%20(642).png)
 
 ### Services Page
-- `screenshots/pawbili services/Screenshot (643).png`
-- `screenshots/pawbili services/Screenshot (644).png`
-- `screenshots/pawbili services/Screenshot (645).png`
+![Services 1](screenshots/pawbili%20services/Screenshot%20(643).png)
+![Services 2](screenshots/pawbili%20services/Screenshot%20(644).png)
+![Services 3](screenshots/pawbili%20services/Screenshot%20(645).png)
 
 ### Contact Page
-- `screenshots/pawbili contacts/Screenshot (646).png`
-- `screenshots/pawbili contacts/Screenshot (647).png`
+![Contact 1](screenshots/pawbili%20contacts/Screenshot%20(646).png)
+![Contact 2](screenshots/pawbili%20contacts/Screenshot%20(647).png)
 
 ### Route Definitions
-- `screenshots/pawbili others/route definitions.png`
+![Route Definitions](screenshots/pawbili%20others/route%20definitions.png)
 
 ### Controller
-- `screenshots/pawbili others/controller.png`
+![Controller](screenshots/pawbili%20others/controller.png)
 
 ### Blade Layout
-- `screenshots/pawbili others/blade layout.png`
+![Blade Layout](screenshots/pawbili%20others/blade%20layout.png)
 
-### VS Code Project / Folder Structure / Browser Output / GitHub Repository
-- `screenshots/pawbili others/Screenshot 2026-08-....png`  
-- `screenshots/pawbili others/Screenshot 2026-08-....png`  
+### Navigation Bar
+![Navigation Bar](screenshots/pawbili%20others/navbar.png)
 
-> Note: Rename these two files into clearer names (recommended):
-> - `vscode-project.png`
-> - `github-repository-public.png`
+### Footer
+![Footer](screenshots/pawbili%20others/footer.png)
 
 ---
 
