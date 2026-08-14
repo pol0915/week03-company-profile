@@ -4,17 +4,23 @@ A responsive multi-page company profile website for **PawBili**, a fictional onl
 
 ---
 
-# 1. Introduction
+## 1. Project Title
 
-## What is a Company Profile Website?
+**PawBili: Pet Supplies Online Shop**
+
+---
+
+## 2. Introduction
+
+### What is a Company Profile Website?
 
 A company profile website is an online platform that introduces a business, its identity, products or services, mission, vision, and contact information. It serves as a digital representation of a company and provides visitors with a convenient way to learn about the business.
 
-## Why Businesses Need One
+### Why Businesses Need One
 
 Businesses need an online presence to make information about their products and services accessible to customers. A company profile website can improve visibility, communicate a company's identity, establish credibility, and provide an easy way for customers to find important information.
 
-## Purpose of the Project
+### Purpose of the Project
 
 For this project, a fictional company called **PawBili** was created.
 
@@ -32,7 +38,7 @@ The project demonstrates the use of Laravel features including:
 
 ---
 
-# 2. Objectives
+## 3. Objectives
 
 The main objectives of the project are to:
 
@@ -49,9 +55,9 @@ The main objectives of the project are to:
 
 ---
 
-# 3. MVC Architecture
+## 4. MVC Architecture
 
-## What is MVC?
+### What is MVC?
 
 MVC stands for **Model-View-Controller**. It is an architectural pattern that separates an application's responsibilities into different components.
 
@@ -59,474 +65,305 @@ MVC stands for **Model-View-Controller**. It is an architectural pattern that se
 - **View** – handles the presentation and user interface.
 - **Controller** – handles requests and connects the application's routes to the appropriate views.
 
-## MVC in Laravel
+### Why Laravel Uses MVC
 
 Laravel follows the MVC architecture to help developers organize their applications and separate different responsibilities. This makes applications easier to maintain, understand, and expand.
 
-In PawBili, the primary request flow is:
+### Advantages of MVC in Software Development
+
+- Clear separation of concerns
+- Easier maintenance and debugging
+- Better scalability for larger applications
+- Improved code reusability
+- Cleaner collaboration in team projects
+
+### Simple MVC Request Flow Diagram
 
 ```text
-Client / Browser
-       ↓
-Route (routes/web.php)
-       ↓
-CompanyController
-       ↓
-Blade View
-       ↓
-HTML Response
-       ↓
 Browser
+  │
+  ▼
+Route (web.php)
+  │
+  ▼
+Controller
+  │
+  ▼
+Blade View
+  │
+  ▼
+Response to Browser
+```
 
----
+### PawBili MVC Components
 
-## PawBili MVC Components
+- **Route**: `routes/web.php` maps URLs to controller methods.
+- **Controller**: `CompanyController.php` handles requests and returns views.
+- **View**: Blade files in `resources/views/pages/` render page content.
 
-### Route
-
-The routes in `routes/web.php` determine which controller method handles each URL.
-
-### Controller
-
-`CompanyController.php` handles the four main page requests and returns the appropriate Blade view.
-
-### View
-
-The Blade files inside `resources/views/pages/` contain the actual page presentation and content.
-
-## Architecture Diagram
+### Architecture Diagram
 
 ![PawBili MVC Architecture](documentation/mvc.png)
 
 ---
 
-# 4. Laravel Routing
+## 5. Laravel Routing
 
-## What is Routing?
+### What is Routing?
 
-Routing determines how an application responds to requests made to specific URLs. In Laravel, routes can connect URLs to controller methods.
+Routing determines how an application responds to requests made to specific URLs. In Laravel, routes connect URLs to controller methods.
 
-## Routes Used in PawBili
+### Named Routes
 
-The project uses `GET` routes for the four required pages:
+Named routes (`->name('home')`, etc.) provide readable references used in Blade links and redirects.
 
-    Route::get('/', [CompanyController::class, 'home']);
-    Route::get('/about', [CompanyController::class, 'about']);
-    Route::get('/services', [CompanyController::class, 'services']);
-    Route::get('/contact', [CompanyController::class, 'contact']);
+### GET Requests
 
-## Route Table
+This project uses `GET` routes because all required pages are read-only display pages.
 
-| URL | Controller Method | Page |
-|---|---|---|
-| `/` | `home()` | Home |
-| `/about` | `about()` | About |
-| `/services` | `services()` | Services |
-| `/contact` | `contact()` | Contact |
+### Route Definitions (`routes/web.php`)
 
-These routes allow visitors to access the different pages of the PawBili website through their corresponding URLs.
+```php
+Route::get('/', [CompanyController::class, 'home'])->name('home');
+Route::get('/about', [CompanyController::class, 'about'])->name('about');
+Route::get('/services', [CompanyController::class, 'services'])->name('services');
+Route::get('/contact', [CompanyController::class, 'contact'])->name('contact');
+```
 
-## Route Definitions Screenshot
+### Route Table
 
-The route definitions screenshot is stored in:
+| URL | Controller Method | Route Name | Page |
+|---|---|---|---|
+| `/` | `home()` | `home` | Home |
+| `/about` | `about()` | `about` | About |
+| `/services` | `services()` | `services` | Services |
+| `/contact` | `contact()` | `contact` | Contact |
 
-`screenshots/pawbili others/`
+### Route Definitions Screenshot
 
----
-
-# 5. Controllers
-
-## Purpose of Controllers
-
-Controllers handle incoming requests and determine what response should be returned to the user. In Laravel, controllers commonly connect route requests to views.
-
-## CompanyController
-
-The PawBili website uses `CompanyController.php` to handle the four required pages.
-
-The controller contains the following methods:
-
-    public function home()
-    {
-        return view('pages.home');
-    }
-
-    public function about()
-    {
-        return view('pages.about');
-    }
-
-    public function services()
-    {
-        return view('pages.services');
-    }
-
-    public function contact()
-    {
-        return view('pages.contact');
-    }
-
-Each method returns the Blade view associated with its page.
-
-## Benefits of Using a Controller
-
-Using a controller keeps the route definitions organized and separates request handling from the presentation layer. It also makes the application easier to maintain and expand.
-
-## Controller Screenshot
-
-The controller screenshot is stored in:
-
-`screenshots/pawbili others/controller.png`
+`/screenshots/route-definitions-web-php.png`
 
 ---
 
-# 6. Blade Templating Engine
+## 6. Controllers
 
-## What is Blade?
+### Purpose of Controllers
 
-Blade is Laravel's built-in templating engine. It provides a simple way to organize HTML and PHP-based templates while allowing layouts and components to be reused.
+Controllers handle incoming requests and determine what response should be returned to users. They keep route files clean and centralize request handling logic.
 
-## Blade Layout
+### Benefits of Controllers
 
-The project uses a shared layout:
+- Cleaner route definitions
+- Better code organization
+- Easier maintenance and scaling
+- Clear separation from presentation layer
+
+### CompanyController Methods
+
+- `home()` → returns `pages.home`
+- `about()` → returns `pages.about`
+- `services()` → returns `pages.services`
+- `contact()` → returns `pages.contact`
+
+### Controller Screenshot
+
+`/screenshots/controller-companycontroller.png`
+
+---
+
+## 7. Blade Templating Engine
+
+### What is Blade?
+
+Blade is Laravel’s built-in templating engine used for creating dynamic and reusable UI templates.
+
+### Blade Layouts
+
+A shared layout is used at:
 
 `resources/views/layouts/app.blade.php`
 
-The shared layout contains the common structure of the website, including the page title, navigation bar, main content area, and footer.
+It contains the HTML skeleton and shared page structure.
 
-## Blade Components
+### Blade Components
 
-Reusable components were created for:
+Reusable components:
 
-`resources/views/components/navbar.blade.php`
+- `resources/views/components/navbar.blade.php`
+- `resources/views/components/footer.blade.php`
 
-`resources/views/components/footer.blade.php`
+### Blade Directives Used
 
-This allows the same navigation bar and footer to be used across multiple pages without duplicating the same code.
-
-## Blade Page Views
-
-The main pages are stored inside:
-
-`resources/views/pages/`
-
-They include:
-
-- `about.blade.php`
-- `contact.blade.php`
-- `home.blade.php`
-- `services.blade.php`
-
-## Blade Directives
-
-The project uses Blade directives such as:
-
-- `@include`
-- `@yield`
-- `@section`
 - `@extends`
+- `@section`
+- `@yield`
+- `@include`
 
-These directives help connect the individual page views to the reusable layout and components.
+### Example
 
-## Blade Layout Screenshot
+```blade
+@extends('layouts.app')
 
-The Blade layout screenshot is stored in:
+@section('title', 'Home')
 
-`screenshots/pawbili others/blade layout.png`
+@section('content')
+    <h1>Welcome to PawBili</h1>
+@endsection
+```
+
+### Blade Layout Screenshot
+
+`/screenshots/blade-layout-app-blade.png`
 
 ---
 
-# 7. Laravel Folder Structure
+## 8. Laravel Folder Structure
 
-The PawBili project follows Laravel's standard project organization.
+```text
+week03-company-profile/
+│
+├── app/
+│   └── Http/
+│       └── Controllers/
+│           └── CompanyController.php
+│
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       ├── components/
+│       └── pages/
+│
+├── routes/
+│   └── web.php
+│
+├── public/
+├── screenshots/
+├── documentation/
+└── README.md
+```
 
-    week03-company-profile/
-    │
-    ├── app/
-    │   └── Http/
-    │       └── Controllers/
-    │           └── CompanyController.php
-    │
-    ├── bootstrap/
-    ├── config/
-    ├── database/
-    │
-    ├── documentation/
-    │   └── mvc.png
-    │
-    ├── public/
-    │   └── images/
-    │
-    ├── resources/
-    │   ├── css/
-    │   │   └── app.css
-    │   │
-    │   ├── js/
-    │   │
-    │   └── views/
-    │       ├── components/
-    │       │   ├── footer.blade.php
-    │       │   └── navbar.blade.php
-    │       │
-    │       ├── layouts/
-    │       │   └── app.blade.php
-    │       │
-    │       └── pages/
-    │           ├── about.blade.php
-    │           ├── contact.blade.php
-    │           ├── home.blade.php
-    │           └── services.blade.php
-    │
-    ├── routes/
-    │   └── web.php
-    │
-    ├── screenshots/
-    │
-    ├── storage/
-    ├── tests/
-    ├── vendor/
-    │
-    ├── artisan
-    ├── composer.json
-    ├── package.json
-    └── README.md
-
-## Folder Purposes
+### Folder Purposes
 
 | Folder | Purpose |
 |---|---|
-| `app/` | Contains the application's controllers and other PHP application logic. |
-| `routes/` | Contains Laravel route definitions. |
-| `resources/` | Contains Blade views, CSS, and JavaScript source files. |
-| `public/` | Contains publicly accessible assets such as images. |
-| `documentation/` | Contains project documentation such as the MVC diagram. |
-| `screenshots/` | Contains screenshots used as project evidence. |
-| `database/` | Contains migrations, factories, and seeders. |
-| `config/` | Contains Laravel configuration files. |
-| `storage/` | Contains application-generated files and logs. |
-| `tests/` | Contains automated tests. |
+| `app/` | Contains controllers and backend application logic. |
+| `routes/` | Contains route definitions (`web.php`). |
+| `resources/` | Contains Blade templates, CSS, and JS source files. |
+| `public/` | Contains publicly accessible assets (images, compiled files). |
+| `bootstrap/` | Laravel bootstrap files and app initialization. |
+| `config/` | Laravel configuration files. |
 
 ---
 
-# 8. Website Pages
+## 9. Screenshots
 
-## Home Page
-
-The Home page serves as the landing page of PawBili. It introduces the company and presents the main message:
-
-**Everything Your Pet Needs, Just a Paw Away.**
-
-It also provides a call-to-action button that directs users to the Services page.
-
-The Home page screenshots are stored in:
-
-`screenshots/pawbili home/`
-
-## About Page
-
-The About page explains the purpose and identity of PawBili.
-
-It includes the company's background, mission, vision, core values, and team information.
-
-### Mission
-
-To make pet shopping simple, convenient, and accessible by providing quality pet supplies that help owners care for their pets with ease.
-
-### Vision
-
-To become a trusted online pet supply store known for convenience, quality products, and genuine care for pets and their owners.
-
-### Core Values
-
-**Pet-Centered Care**  
-We put the needs and well-being of pets first.
-
-**Accessibility**  
-We make essential pet supplies easy and convenient to find and purchase.
-
-**Warmth**  
-We treat every customer and pet with kindness and care.
-
-**Better Quality**  
-We strive to provide reliable and quality products for everyday pet needs.
-
-**Integrity**  
-We value honesty, transparency, and responsible service.
-
-**Love for Pets**  
-We are driven by genuine appreciation and care for pets.
-
-**Improvement**  
-We continuously improve our products and services to serve pet owners better.
-
-The About page screenshots are stored in:
-
-`screenshots/pawbili about/`
-
-## Services Page
-
-The Services page presents PawBili's major product categories:
-
-1. Pet Supplies
-2. Dog Food & Treats
-3. Cat Litter & Accessories
-4. Aquariums & Fish Supplies
-5. Bird Feeders & Food
-6. Pet Grooming Products
-7. Pet Health & Wellness
-
-Each category is presented through a separate service card containing a title and description.
-
-The Services page screenshots are stored in:
-
-`screenshots/pawbili services/`
-
-## Contact Page
-
-The Contact page provides the company's contact information and a contact form interface for users who want to reach PawBili.
-
-The Contact page screenshots are included in the screenshots folder.
-
----
-
-# 9. Screenshots
-
-The project contains screenshots demonstrating the required website pages, interface components, and Laravel implementation.
-
-## Required Screenshots
+All required screenshots are stored in the `screenshots/` folder using the structure below.
 
 ### Home Page
-
-Location:
-
-`screenshots/pawbili home/`
+- `screenshots/pawbili home/Screenshot (634).png`
+- `screenshots/pawbili home/Screenshot (635).png`
+- `screenshots/pawbili home/Screenshot (636).png`
+- `screenshots/pawbili home/Screenshot (637).png`
 
 ### About Page
-
-Location:
-
-`screenshots/pawbili about/`
+- `screenshots/pawbili about/Screenshot (638).png`
+- `screenshots/pawbili about/Screenshot (639).png`
+- `screenshots/pawbili about/Screenshot (640).png`
+- `screenshots/pawbili about/Screenshot (641).png`
+- `screenshots/pawbili about/Screenshot (642).png`
 
 ### Services Page
-
-Location:
-
-`screenshots/pawbili services/`
+- `screenshots/pawbili services/Screenshot (643).png`
+- `screenshots/pawbili services/Screenshot (644).png`
+- `screenshots/pawbili services/Screenshot (645).png`
 
 ### Contact Page
-
-The Contact Page screenshot is included in the screenshots folder.
-
-### Navigation Bar
-
-The Navigation Bar screenshot is included with the PawBili website screenshots.
-
-### Footer
-
-The Footer screenshot is included with the PawBili website screenshots.
+- `screenshots/pawbili contacts/Screenshot (646).png`
+- `screenshots/pawbili contacts/Screenshot (647).png`
 
 ### Route Definitions
-
-Location:
-
-`screenshots/pawbili others/`
+- `screenshots/pawbili others/route definitions.png`
 
 ### Controller
-
-Location:
-
-`screenshots/pawbili others/controller.png`
+- `screenshots/pawbili others/controller.png`
 
 ### Blade Layout
+- `screenshots/pawbili others/blade layout.png`
 
-Location:
+### VS Code Project / Folder Structure / Browser Output / GitHub Repository
+- `screenshots/pawbili others/Screenshot 2026-08-....png`  
+- `screenshots/pawbili others/Screenshot 2026-08-....png`  
 
-`screenshots/pawbili others/blade layout.png`
-
----
-
-# 10. Problems Encountered
-
-## Problem 1: Node.js and npm were initially unavailable
-
-During the development process, the `node` and `npm` commands were initially not recognized in PowerShell.
-
-## Problem 2: Git was not initialized
-
-The project initially returned the following error when Git commands were used:
-
-    fatal: not a git repository
-
-This happened because Git had not yet been initialized in the Laravel project directory.
-
-## Problem 3: The initial Git commit contained the entire project
-
-The first attempt at creating the Git history placed most of the project into one initial commit. Since the requirements called for multiple meaningful commits, the Git history needed to be reorganized.
+> Note: Rename these two files into clearer names (recommended):
+> - `vscode-project.png`
+> - `github-repository-public.png`
 
 ---
 
-# 11. Solutions
+## 10. Problems Encountered
 
-## Solution to Problem 1
+1. **Node.js and npm were initially unavailable**  
+   `node` and `npm` were not recognized in PowerShell.
 
-Node.js and npm were installed and verified using:
+2. **Git was not initialized**  
+   Error encountered: `fatal: not a git repository`.
 
-    node -v
-    npm -v
-
-After installation, the project's frontend dependencies were installed using:
-
-    npm install
-
-## Solution to Problem 2
-
-Git was initialized inside the Laravel project directory using:
-
-    git init
-
-The project was then organized into meaningful commits.
-
-## Solution to Problem 3
-
-The Git history was reorganized into separate commits representing different stages of development.
-
-The meaningful commits include:
-
-    feat: create Laravel project
-    feat: add company routes
-    feat: create CompanyController
-    feat: build reusable Blade layout and components
-    feat: build Home page
-    feat: build About page
-    feat: build Services page
-    feat: build Contact page
-
-This provides more than the required minimum of eight meaningful commits.
+3. **Initial commit was too large**  
+   Most work was grouped into one commit, which did not satisfy meaningful commit requirements.
 
 ---
 
-# 12. Reflection
+## 11. Solutions
 
-Developing the PawBili website helped me understand how Laravel organizes a web application using the Model-View-Controller architecture. Before this project, I mostly thought of a website as a group of pages containing HTML, CSS, and other files. Working with Laravel showed me how routes, controllers, and views can work together while keeping their responsibilities separate.
+1. **Node.js/npm fix**  
+   Installed Node.js and verified using:
+   - `node -v`
+   - `npm -v`
+   Then ran `npm install`.
 
-One of the most important concepts I learned was Laravel routing. The routes determine which URL a user can access and connect that URL to the appropriate controller method. This made it easier to understand what happens when a user enters a URL in a browser. Instead of directly opening a page file, the request passes through Laravel's routing system first.
+2. **Git initialization fix**  
+   Ran `git init` in the Laravel project root.
 
-I also learned how controllers are used to organize application logic. The `CompanyController` contains separate methods for the Home, About, Services, and Contact pages. Each method returns the correct Blade view. This helped me understand why controllers are useful for keeping route definitions clean and separating request handling from the presentation of the website.
-
-Another important part of the project was learning Blade. Creating a shared layout and reusable components for the navigation bar and footer prevented me from having to duplicate the same code across every page. This showed me how reusable components can make a project easier to maintain and keep the design consistent throughout the website.
-
-The project also improved my understanding of Git. I learned that commits should represent meaningful development stages rather than simply creating multiple commits for the sake of increasing the commit count. Organizing the PawBili project into commits for routing, controllers, layouts, and pages made the development process easier to document and understand.
-
-Overall, the activity gave me practical experience with Laravel's MVC structure, routing, controllers, Blade templates, reusable components, responsive web design, and Git version control. It also helped me understand how the different parts of a web application work together, from a user's request to the final HTML response displayed in the browser. These concepts provide a useful foundation for developing larger and more complex web applications in the future.
+3. **Commit history fix**  
+   Reorganized work into meaningful commits:
+   - `feat: create Laravel project`
+   - `feat: add company routes`
+   - `feat: create CompanyController`
+   - `feat: build reusable Blade layout and components`
+   - `feat: build Home page`
+   - `feat: build About page`
+   - `feat: build Services page`
+   - `feat: build Contact page`
+   - `docs: update README`
 
 ---
 
-# 13. References
+## 12. Reflection
+
+Developing the PawBili website helped me understand how Laravel organizes applications through the Model-View-Controller (MVC) architecture. Before this project, I mostly viewed websites as separate page files with HTML and CSS. Through Laravel, I learned that a request follows a structured flow: route, controller, then view. This made the development process clearer and more maintainable.
+
+I learned that routing is not just URL mapping—it is the entry point of application behavior. In this project, each route in `web.php` was connected to a dedicated method in `CompanyController`. This gave me a stronger understanding of how Laravel receives user requests and decides what content to return.
+
+Working with controllers showed me the value of organizing logic away from presentation. Instead of putting everything inside route closures, I used controller methods (`home`, `about`, `services`, `contact`) to return views cleanly. This approach made routes shorter, code easier to read, and future updates easier to implement.
+
+Blade templating was another major learning area. By using a shared layout and reusable components (`navbar` and `footer`), I avoided repeating code across multiple pages. Blade directives like `@extends`, `@section`, `@yield`, and `@include` helped me structure files consistently. I also realized how reusable templates improve long-term maintainability and make UI updates faster.
+
+I also appreciated the principle of separation of concerns. Keeping structure in Blade views, navigation logic in routes, and request handling in controllers made debugging easier. When something broke, I could quickly identify whether the issue came from routing, controller logic, or the view template.
+
+Finally, this project improved my Git workflow. I learned that meaningful commits are important for documentation, collaboration, and progress tracking. Breaking tasks into clear commit stages made the project history understandable and professional.
+
+Overall, this project gave me practical experience with MVC, Laravel routing, controllers, Blade templating, responsive layouting, and Git version control. These are essential foundations for building larger enterprise systems, where clean architecture and maintainable code are critical.
+
+---
+
+## 13. References (APA 7th Edition)
 
 Laravel. (n.d.). *Laravel documentation*. https://laravel.com/docs
 
-MDN Web Docs. (n.d.). *CSS: Cascading Style Sheets*. https://developer.mozilla.org/en-US/docs/Web/CSS
-
 MDN Web Docs. (n.d.). *HTML: HyperText Markup Language*. https://developer.mozilla.org/en-US/docs/Web/HTML
 
+MDN Web Docs. (n.d.). *CSS: Cascading Style Sheets*. https://developer.mozilla.org/en-US/docs/Web/CSS
+
 PHP Documentation Group. (n.d.). *PHP manual*. https://www.php.net/docs.php
+
+Tailwind Labs. (n.d.). *Tailwind CSS documentation*. https://tailwindcss.com/docs
