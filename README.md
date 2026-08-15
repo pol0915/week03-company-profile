@@ -141,7 +141,7 @@ Route::get('/contact', [CompanyController::class, 'contact'])->name('contact');
 
 ### Route Definitions Screenshot
 
-![Route Definitions](screenshots/pawbili%20others/route%20definitions.png)
+![Route Definitions](screenshots/pawbili%20others/route%20definition.png)
 
 ---
 
@@ -280,7 +280,7 @@ week03-company-profile/
 ![Contact 2](screenshots/pawbili%20contacts/Screenshot%20(647).png)
 
 ### Route Definitions
-![Route Definitions](screenshots/pawbili%20others/route%20definitions.png)
+![Route Definitions](screenshots/pawbili%20others/route%20definition.png)
 
 ### Controller
 ![Controller](screenshots/pawbili%20others/controller.png)
