@@ -141,7 +141,7 @@ Route::get('/contact', [CompanyController::class, 'contact'])->name('contact');
 
 ### Route Definitions Screenshot
 
-`/screenshots/pawbili others/route definitions.png`
+![Route Definitions](screenshots/pawbili%20others/route%20definitions.png)
 
 ---
 
@@ -167,7 +167,7 @@ Controllers handle incoming requests and determine what response should be retur
 
 ### Controller Screenshot
 
-`/screenshots/pawbili others/controller.png`
+![Controller](screenshots/pawbili%20others/controller.png)
 
 ---
 
@@ -213,7 +213,7 @@ Reusable components:
 
 ### Blade Layout Screenshot
 
-`/screenshots/pawbili others/blade layout.png`
+![Blade Layout](screenshots/pawbili%20others/blade%20layout.png)
 
 ---
 
