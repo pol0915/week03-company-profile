@@ -294,6 +294,18 @@ week03-company-profile/
 ### Footer
 ![Footer](screenshots/pawbili%20others/footer.png)
 
+### VS Code Project
+![VS Code Project](screenshots/vscodeproj.png)
+
+### Laravel Folder Structure
+![Laravel Folder Structure](screenshots/folderstruc.png)
+
+### GitHub Repository
+![GitHub Repository](screenshots/repo.png)
+
+### Browser Output
+![Browser Output](screenshots/browser.png)
+
 ---
 
 ## 10. Problems Encountered
